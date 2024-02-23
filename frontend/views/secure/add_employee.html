@@ -1,0 +1,52 @@
+{% extends "secure/internal.html" %}
+
+{% block content %}
+
+<div class="container">
+    <h1>Add employee</h1>
+    {% if posted %}
+        {% if isError %}
+            <div class="alert alert-danger" role="alert">
+                Could not add the employee. {{ message }}
+            </div>
+        {% endif %}
+        {% if not isError %}
+            <div class="alert alert-success" role="alert">
+                {{ message }}
+            </div>
+        {% endif %}
+    {% endif %}
+
+    <form action="/secure/manage/employees/add" method="post" autocomplete="off">
+        <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name" name="name" maxlength="64" required>
+        </div>
+        <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" class="form-control" id="username" name="username" maxlength="64" required>
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" name="password" required>
+        </div>
+        <div class="mb-3">
+            <label for="salery" class="form-label">Hourly wage</label>
+            <input type="number" class="form-control" id="salery" name="salery" required>
+        </div>
+        <div class="mb-3">
+            <label for="trustLevel" class="form-label">Role</label>
+            <select class="form-select" id="trustLevel" name="trustLevel" required>
+                <option value="1">Employee</option>
+                <option value="2">Manager</option>
+                <option value="3">Owner</option>
+                <option value="4">Admin</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Add</button>
+
+    </form>
+</div>
+    
+{% endblock %}
+            

@@ -1,0 +1,29 @@
+{% extends "secure/internal.html" %}
+
+{% block content %}
+    <div class="container">
+        <h1>Manage Items</h1>
+        <a href="/secure/manage/items/add" class="btn btn-primary">Add item</a>
+        <!-- A list of cards with Name Description CostPrice and SellingPrice -->
+        <div class="row row-cols-1 row-cols-md-3 g-4 mt-4">
+            {% for item in items %}
+            <div class="col">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title"> {{ item.Name }}</h5>
+                        <p class="card-text"> {{ item.Description }} </p>
+                        <p class="card-text">Cost Price: {{ item.CostPrice }},-</p>
+                        <p class="card-text">Selling Price: {{ item.SellingPrice }},-</p>
+                        <a href="/secure/manage/items/edit/{{item.ItemSku}}" class="btn btn-primary">Edit</a>
+                        {% if item.Hidden %}
+                            <a href="/secure/manage/items/show/{{item.ItemSku}}" class="btn btn-success">Show</a>
+                        {% else %}
+                            <a href="/secure/manage/items/hide/{{item.ItemSku}}" class="btn btn-warning">Hide</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

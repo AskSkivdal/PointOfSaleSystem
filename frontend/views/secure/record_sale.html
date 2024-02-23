@@ -1,0 +1,38 @@
+{% extends "secure/internal.html" %}
+
+{% block content %}
+
+    <div class="container">
+        <h1>Record Sale</h1>
+        {% if post %}
+            {% if success %}
+                <div class="alert alert-success" role="alert">
+                    Sale recorded
+                </div>
+            {% else %}
+                <div class="alert alert-danger" role="alert">
+                    Sale not recorded
+                </div>
+            {% endif %}
+        {% endif %}
+        <form action="/secure/record_sale" method="post">
+            <div class="mb-3">
+                <label for="ItemSku" class="form-label">Item Name</label>
+                <!-- select from items list-->
+                <select class="form-select" id="ItemSku" name="ItemSku" required>
+                    {% for item in items %}
+                        <option value="{{item.ItemSku}}">{{item.Name}}</option>
+                    {% endfor %}
+                </select>
+
+
+            </div>
+            <div class="mb-3">
+                <label for="Quantity" class="form-label">Quantity</label>
+                <input type="number" class="form-control" id="Quantity" name="Quantity" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Record Sale</button>
+        </form>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "secure/internal.html" %}
+
+{% block content %}
+<div class="container">
+    <a href="/secure/manage/employees/add" class="btn btn-primary mt-3">Add Employee</a>
+    <table class="table">
+        <thead>
+            <tr>
+                 <th scope="col">ID</th>
+                 <th scope="col">Name</th>
+                 <th scope="col">Username</th>
+                 <th scope="col">Salery</th>
+                 <th scope="col">Role</th>
+                 <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for employee in employees %}
+                <tr>
+                    <td class="align-middle">{{ employee.EmployeeID }}</td>
+                    <td class="align-middle">{{ employee.Name }}</td>
+                    <td class="align-middle">{{ employee.Username }}</td>
+                    <td class="align-middle">{{ employee.Salery }} kr</td>
+                    <td class="align-middle">{{ employee.TrustLevel }}</td>
+                    <td class="align-middle"><a href="/secure/manage/employees/disable/{{employee.EmployeeID}}" class="btn btn-danger">Disable</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+{% endblock %}

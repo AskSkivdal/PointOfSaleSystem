@@ -1,0 +1,11 @@
+# syntax=docker/dockerfile:1
+
+FROM node:slim
+COPY . /app
+WORKDIR /app
+# Installing dependencies
+RUN npm install nodemon -g
+RUN npm install
+
+# Starting our application
+CMD [ "nodemon", "server.js" ]

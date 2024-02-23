@@ -1,0 +1,49 @@
+{% extends "secure/internal.html" %}
+
+{% block content %}
+    <div class="container">
+        {% if editing %}
+            <h1>Edit Item</h1>
+            <form action="/secure/manage/items/edit/{{item.ItemSku}}" method="post">
+                <div class="mb-3">
+                    <label for="Name" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="Name" name="Name" value="{{item.Name}}" required>
+                </div>
+                <div class="mb-3">
+                    <label for="Description" class="form-label">Description</label>
+                    <input type="text" class="form-control" id="Description" name="Description" value="{{item.Description}}" required>
+                </div>
+                <div class="mb-3">
+                    <label for="CostPrice" class="form-label">Cost Price</label>
+                    <input type="number" class="form-control" id="CostPrice" name="CostPrice" value="{{item.CostPrice}}" required>
+                </div>
+                <div class="mb-3">
+                    <label for="SellingPrice" class="form-label">Selling Price</label>
+                    <input type="number" class="form-control" id="SellingPrice" name="SellingPrice" value="{{item.SellingPrice}}" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Edit</button>
+            </form>
+        {% else %}
+            <h1>Add Item</h1>
+            <form action="/secure/manage/items/add" method="post">
+                <div class="mb-3">
+                    <label for="Name" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="Name" name="Name" required>
+                </div>
+                <div class="mb-3">
+                    <label for="Description" class="form-label">Description</label>
+                    <input type="text" class="form-control" id="Description" name="Description" required>
+                </div>
+                <div class="mb-3">
+                    <label for="CostPrice" class="form-label">Cost Price</label>
+                    <input type="number" class="form-control" id="CostPrice" name="CostPrice" required>
+                </div>
+                <div class="mb-3">
+                    <label for="SellingPrice" class="form-label">Selling Price</label>
+                    <input type="number" class="form-control" id="SellingPrice" name="SellingPrice" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Add</button>
+            </form>
+        {% endif %}
+    </div>
+{% endblock %}

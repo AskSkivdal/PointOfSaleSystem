@@ -1,0 +1,20 @@
+{% extends "secure/internal.html" %}
+
+{% block content %}
+
+    <div class="row h-100">
+        <div class="col-12 col-md-6 mx-auto my-auto">
+            <div class="card">
+                <div class="card-body">
+                    <h1 class="card-title text-center">Welcome to the store system</h1>
+                    <p class="card-text text-center">This is a simple store system. You can record sales, manage items and manage employees.</p>
+                    <div class="d-flex justify-content-center gap-3">
+                      <a href="/secure/record_sale" class="btn btn-primary">Record Sale</a>
+                      <a href="/secure/manage/items" class="btn btn-primary">Manage Items</a>
+                      <a href="/secure/manage/employees" class="btn btn-primary">Manage Employees</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
